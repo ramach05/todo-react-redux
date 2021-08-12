@@ -4,7 +4,7 @@ import "./TodoItem.css";
 
 function TodoItem() {
   return (
-    <li className="">
+    <li className="list-group-item">
       <div className="">123</div>
     </li>
   );
