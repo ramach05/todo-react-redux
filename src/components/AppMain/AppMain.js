@@ -5,14 +5,18 @@ import TodoListItems from "../TodoListItems/TodoListItems";
 
 function AppMain() {
   return (
-    <main className="">
-      <div className="">main</div>
+    <main>
+      <article>
+        <section className="">
+          <div className="">main</div>
 
-      <form className="">
-        <input className="" placeholder="asd" />
-      </form>
+          <form className="">
+            <input className="" placeholder="asd" />
+          </form>
 
-      <TodoListItems />
+          <TodoListItems />
+        </section>
+      </article>
     </main>
   );
 }
