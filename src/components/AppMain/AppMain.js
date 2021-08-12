@@ -2,18 +2,16 @@ import React from "react";
 
 import "./AppMain.css";
 import TodoListItems from "../TodoListItems/TodoListItems";
+import Filter from "../Filter/Filter";
+import CounterTodos from "../CounterTodos/CounterTodos";
 
 function AppMain() {
   return (
     <main>
       <article>
         <section className="">
-          <div className="">main</div>
-
-          <form className="">
-            <input className="" placeholder="asd" />
-          </form>
-
+          <Filter />
+          <CounterTodos />
           <TodoListItems />
         </section>
       </article>
