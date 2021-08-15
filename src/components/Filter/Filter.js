@@ -5,17 +5,12 @@ import "./Filter.css";
 function Filter() {
   return (
     <form className="">
-      <input className="" placeholder="asd" />
-
-      <button type="button" className="">
-        All
-      </button>
-      <button type="button" className="">
-        Active
-      </button>
-      <button type="button" className="">
-        Done
-      </button>
+      <input
+        type="text"
+        className="form-control"
+        placeholder="Default input"
+        id="inputDefault"
+      />
 
       <div
         className="btn-group"

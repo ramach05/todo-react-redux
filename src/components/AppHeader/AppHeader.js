@@ -4,9 +4,9 @@ import "./AppHeader.css";
 
 function AppHeader() {
   return (
-    <header className="">
+    <header className="header">
       <div className="">header</div>
-      <h1 className="header-title">My Todo List</h1>
+      <h1 className="header__title">My Todo List</h1>
     </header>
   );
 }

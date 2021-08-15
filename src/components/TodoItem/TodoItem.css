@@ -1,0 +1,19 @@
+.todo-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-item__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 120px;
+  height: 40px;
+}
+
+.todo-item__icon {
+  width: 20px;
+  height: auto;
+}
