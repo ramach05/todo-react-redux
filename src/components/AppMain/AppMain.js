@@ -9,7 +9,7 @@ function AppMain() {
   return (
     <main>
       <article>
-        <section className="">
+        <section className="main">
           <Filter />
           <CounterTodos />
           <TodoListItems />
