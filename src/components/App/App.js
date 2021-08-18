@@ -13,6 +13,8 @@ function App() {
         <AppMain />
         <AppFooter />
       </div>
+
+      <div className="bg-body"></div>
     </div>
   );
 }

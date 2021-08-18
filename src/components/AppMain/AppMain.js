@@ -7,9 +7,9 @@ import CounterTodos from "../CounterTodos/CounterTodos";
 
 function AppMain() {
   return (
-    <main>
+    <main className="main">
       <article>
-        <section className="main">
+        <section>
           <Filter />
           <CounterTodos />
           <TodoListItems />

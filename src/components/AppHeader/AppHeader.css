@@ -1,5 +1,5 @@
 .header {
-  margin: calc(80 / 1280 * 100vw) 0 0;
+  margin: calc(80 / 1280 * 100vw) 0 30px;
   padding: 20px;
   border-radius: 20px;
   background: rgba(0, 0, 0, 0.5);

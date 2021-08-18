@@ -4,53 +4,59 @@ import "./Filter.css";
 
 function Filter() {
   return (
-    <form className="">
+    <form className="filter-form">
       <input
         type="text"
-        className="form-control"
+        className="filter-form__input"
         placeholder="Default input"
         id="inputDefault"
       />
 
-      <div
-        className="btn-group"
+      <ul
+        className="filter-form__radio-wrapp"
         role="group"
         aria-label="Basic radio toggle button group"
       >
-        <input
-          type="radio"
-          className="btn-check"
-          name="btnradio"
-          id="btnradio1"
-          autoComplete="off"
-          defaultChecked="true"
-        />
-        <label className="btn btn-outline-primary" htmlFor="btnradio1">
-          All
-        </label>
-        <input
-          type="radio"
-          className="btn-check"
-          name="btnradio"
-          id="btnradio2"
-          autoComplete="off"
-          defaultChecked=""
-        />
-        <label className="btn btn-outline-primary" htmlFor="btnradio2">
-          Active
-        </label>
-        <input
-          type="radio"
-          className="btn-check"
-          name="btnradio"
-          id="btnradio3"
-          autoComplete="off"
-          defaultChecked=""
-        />
-        <label className="btn btn-outline-primary" htmlFor="btnradio3">
-          Done
-        </label>
-      </div>
+        <li>
+          <input
+            type="radio"
+            className="filter-form__radio"
+            name="btnradio"
+            id="btnradio1"
+            autoComplete="off"
+            defaultChecked="true"
+          />
+          <label className="filter-form__radio-label" htmlFor="btnradio1">
+            All
+          </label>
+        </li>
+        <li>
+          <input
+            type="radio"
+            className="filter-form__radio"
+            name="btnradio"
+            id="btnradio2"
+            autoComplete="off"
+            defaultChecked=""
+          />
+          <label className="filter-form__radio-label" htmlFor="btnradio2">
+            Active
+          </label>
+        </li>
+        <li>
+          <input
+            type="radio"
+            className="filter-form__radio"
+            name="btnradio"
+            id="btnradio3"
+            autoComplete="off"
+            defaultChecked=""
+          />
+          <label className="filter-form__radio-label" htmlFor="btnradio3">
+            Done
+          </label>
+        </li>
+      </ul>
     </form>
   );
 }
