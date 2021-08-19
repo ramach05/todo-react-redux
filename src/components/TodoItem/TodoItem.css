@@ -1,19 +1,42 @@
 .todo-item {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+
+  margin: 0 0 10px 0;
+}
+.todo-item:last-of-type {
+  margin: 0;
+}
+
+.todo-item__title {
+  font-family: Caveat, sans-serif;
+  font-weight: normal;
+  font-size: 20px;
+
+  margin: 0 20px 0 0;
+  padding: 0;
+}
+
+.todo-item__wrapp-btn {
+  display: flex;
 }
 
 .todo-item__btn {
   display: flex;
-  justify-content: center;
-  align-items: center;
 
-  width: 120px;
-  height: 40px;
+  border: none;
+  margin: 0 6px 0 0;
+  padding: 0;
+}
+.todo-item__btn:last-of-type {
+  margin: 0;
+}
+.todo-item__btn:hover {
+  cursor: pointer;
 }
 
 .todo-item__icon {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 }

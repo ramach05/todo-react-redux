@@ -6,8 +6,12 @@ import TodoItem from "../TodoItem/TodoItem";
 function TodoListItems() {
   return (
     <ul className="todo-list-items">
-      <TodoItem />
-      <TodoItem />
+      <li>
+        <TodoItem />
+      </li>
+      <li>
+        <TodoItem />
+      </li>
     </ul>
   );
 }

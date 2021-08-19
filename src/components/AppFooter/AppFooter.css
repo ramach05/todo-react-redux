@@ -4,3 +4,9 @@
   border-radius: 20px;
   background: rgba(0, 0, 0, 0.5);
 }
+
+.footer__title {
+  font-family: Caveat, sans-serif;
+  font-weight: normal;
+  font-size: 30px;
+}

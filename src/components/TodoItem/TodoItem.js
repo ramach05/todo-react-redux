@@ -6,21 +6,22 @@ import buttonImportant from "../../images/svg/exclamation-circle-solid.svg";
 
 function TodoItem() {
   return (
-    <li className="todo-item">
-      123
-      <button type="button" className="todo-item__btn">
-        Delete
-        <img src={buttonTrash} alt="delete." className="todo-item__icon" />
-      </button>
-      <button type="button" className="todo-item__btn">
-        Important
-        <img
-          src={buttonImportant}
-          alt="mark as important."
-          className="todo-item__icon"
-        />
-      </button>
-    </li>
+    <div className="todo-item">
+      <p className="todo-item__title">123</p>
+
+      <div className="todo-item__wrapp-btn">
+        <button type="button" className="todo-item__btn">
+          <img src={buttonTrash} alt="delete." className="todo-item__icon" />
+        </button>
+        <button type="button" className="todo-item__btn">
+          <img
+            src={buttonImportant}
+            alt="mark as important."
+            className="todo-item__icon"
+          />
+        </button>
+      </div>
+    </div>
   );
 }
 
