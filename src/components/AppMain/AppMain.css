@@ -2,4 +2,5 @@
   padding: calc(15px + (20 - 15) * ((100vw - 320px) / (1280 - 320)));
   border-radius: 20px;
   background: rgba(0, 0, 0, 0.5);
+  width: 100%;
 }

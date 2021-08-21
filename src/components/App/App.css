@@ -20,7 +20,7 @@
   align-items: center;
 
   min-height: 100vh;
-  width: max-content;
+  width: calc(260px + (480 - 260) * ((100vw - 320px) / (1280 - 320)));
   margin: 0 auto;
   color: white;
   z-index: 99;

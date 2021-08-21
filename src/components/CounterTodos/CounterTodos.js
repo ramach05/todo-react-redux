@@ -5,7 +5,7 @@ import "./CounterTodos.css";
 function CounterTodos() {
   return (
     <div className="">
-      <p className="">1 more to do, 3 done</p>
+      <p className="counter-todos">1 more to do, 3 done</p>
     </div>
   );
 }
