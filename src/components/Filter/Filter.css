@@ -9,7 +9,7 @@
 .filter-form__input {
   font-family: Caveat, sans-serif;
   font-weight: normal;
-  font-size: calc(22px + (26 - 22) * ((100vw - 320px) / (1280 - 320)));
+  font-size: calc(20px + (26 - 20) * ((100vw - 320px) / (1280 - 320)));
 
   width: -webkit-fill-available;
   margin: 0 0 calc(10px + (20 - 10) * ((100vw - 320px) / (1280 - 320))) 0;
@@ -62,7 +62,7 @@
 .filter-form__radio-label {
   font-family: Caveat, sans-serif;
   font-weight: normal;
-  font-size: calc(22px + (26 - 22) * ((100vw - 320px) / (1280 - 320)));
+  font-size: calc(20px + (26 - 20) * ((100vw - 320px) / (1280 - 320)));
 
   display: flex;
   justify-content: center;

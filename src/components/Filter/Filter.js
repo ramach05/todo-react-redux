@@ -52,7 +52,7 @@ function Filter() {
             />
             <img
               src={buttonActive}
-              alt="all todos."
+              alt="active todos."
               className="filter-form__icon"
             />
             Active
@@ -70,7 +70,7 @@ function Filter() {
             />
             <img
               src={buttonDone}
-              alt="all todos."
+              alt="done todos."
               className="filter-form__icon"
             />
             Done
