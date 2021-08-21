@@ -1,14 +1,15 @@
 .header {
-  margin: calc(80 / 1280 * 100vw) 0 30px;
-  padding: 20px;
+  margin: calc(20px + (50 - 20) * ((100vw - 320px) / (1280 - 320))) 0;
+  padding: calc(15px + (20 - 15) * ((100vw - 320px) / (1280 - 320)));
   border-radius: 20px;
   background: rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
 
 .header__title {
   font-family: Caveat, sans-serif;
   font-weight: bold;
-  font-size: 40px;
+  font-size: calc(24px + (40 - 24) * ((100vw - 320px) / (1280 - 320)));
 
   margin: 0;
   padding: 0;
