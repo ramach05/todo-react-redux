@@ -5,7 +5,7 @@ import TodoItem from "../TodoItem/TodoItem";
 
 function TodoListItems() {
   return (
-    <ul className="list-group">
+    <ul className="todo-list-items">
       <TodoItem />
       <TodoItem />
     </ul>
