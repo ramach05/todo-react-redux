@@ -27,6 +27,25 @@
   padding: 0;
 }
 
+.todo-item__title_done {
+  position: relative;
+  color: grey;
+}
+.todo-item__title_done::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  border-bottom: 2px solid rgba(255, 127, 0, 0.8);
+  width: 100%;
+  transform: rotate(-1deg);
+}
+
+.todo-item__title_important {
+  font-size: calc(17px + (21 - 17) * ((100vw - 320px) / (1280 - 320)));
+  font-weight: bold;
+}
+
 .todo-item__wrapp-btn {
   display: flex;
 }
@@ -49,9 +68,17 @@
 .todo-item__icon {
   width: 30px;
   height: 30px;
+  border-radius: 4px;
 
   transition: transform 0.2s ease;
 }
 .todo-item__icon:hover {
   transform: scale(1.2);
+}
+
+.todo-item__icon_important_done {
+  opacity: 0.3;
+}
+.todo-item__icon_important_done:hover {
+  transform: scale(1);
 }

@@ -23,12 +23,12 @@ function Filter() {
         aria-label="Basic radio toggle button group"
       >
         <li className="filter-form__radio-li">
-          <label className="filter-form__radio-label" htmlFor="btnradio1">
+          <label className="filter-form__radio-label" htmlFor="btn-radio-all">
             <input
               type="radio"
               className="filter-form__radio"
               name="btnradio"
-              id="btnradio1"
+              id="btn-radio-all"
               autoComplete="off"
               defaultChecked="true"
             />
@@ -41,12 +41,15 @@ function Filter() {
           </label>
         </li>
         <li className="filter-form__radio-li">
-          <label className="filter-form__radio-label" htmlFor="btnradio2">
+          <label
+            className="filter-form__radio-label"
+            htmlFor="btn-radio-active"
+          >
             <input
               type="radio"
               className="filter-form__radio"
               name="btnradio"
-              id="btnradio2"
+              id="btn-radio-active"
               autoComplete="off"
               defaultChecked=""
             />
@@ -59,12 +62,12 @@ function Filter() {
           </label>
         </li>
         <li className="filter-form__radio-li">
-          <label className="filter-form__radio-label" htmlFor="btnradio3">
+          <label className="filter-form__radio-label" htmlFor="btn-radio-done">
             <input
               type="radio"
               className="filter-form__radio"
               name="btnradio"
-              id="btnradio3"
+              id="btn-radio-done"
               autoComplete="off"
               defaultChecked=""
             />

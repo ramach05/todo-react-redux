@@ -17,7 +17,12 @@ function AppFooter() {
       <nav className="footer__nav">
         <ul className="footer__nav-ul">
           <li className="footer__nav-li">
-            <a href="https://github.com/ramach05" className="footer__nav-link">
+            <a
+              href="https://github.com/ramach05"
+              target="_blank"
+              rel="noreferrer"
+              className="footer__nav-link"
+            >
               <img
                 src={githubIcon}
                 alt="github icon."
@@ -26,7 +31,12 @@ function AppFooter() {
             </a>
           </li>
           <li className="footer__nav-li">
-            <a href="https://www.facebook.com/ramach05">
+            <a
+              href="https://www.facebook.com/ramach05"
+              target="_blank"
+              rel="noreferrer"
+              className="footer__nav-link"
+            >
               <img
                 src={facebookIcon}
                 alt="facebook icon."
@@ -35,7 +45,12 @@ function AppFooter() {
             </a>
           </li>
           <li className="footer__nav-li">
-            <a href="https://t.me/ramach05">
+            <a
+              href="https://t.me/ramach05"
+              target="_blank"
+              rel="noreferrer"
+              className="footer__nav-link"
+            >
               <img
                 src={telegramIcon}
                 alt="telegram icon."
@@ -44,7 +59,12 @@ function AppFooter() {
             </a>
           </li>
           <li className="footer__nav-li">
-            <a href="https://www.linkedin.com/in/ramach05/">
+            <a
+              href="https://www.linkedin.com/in/ramach05/"
+              target="_blank"
+              rel="noreferrer"
+              className="footer__nav-link"
+            >
               <img
                 src={linkedinIcon}
                 alt="linkedin icon."
