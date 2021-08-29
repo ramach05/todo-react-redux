@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 import "./TodoItem.css";
-import buttonTrash from "../../images/svg/delete_forever_white_24dp.svg";
-import buttonImportant from "../../images/svg/warning_amber_white_24dp.svg";
-import buttonImportantActive from "../../images/svg/warning-active_amber_orange_24dp.svg";
+import trashButton from "../../images/svg/delete_forever_white_24dp.svg";
+import importantButton from "../../images/svg/warning_amber_white_24dp.svg";
+import importantActiveButton from "../../images/svg/warning-active_amber_orange_24dp.svg";
 
 function TodoItem({ title, important }) {
   const [isDoneItem, setIsDoneItem] = useState(false);
@@ -22,17 +22,16 @@ function TodoItem({ title, important }) {
   }
 
   function renderTitleClassName() {
-    switch (true) {
-      case isDoneItem && isImportant:
-        return "todo-item__title todo-item__title_done todo-item__title_important";
-      case isDoneItem && !isImportant:
-        return "todo-item__title todo-item__title_done";
-      case !isDoneItem && isImportant:
-        return "todo-item__title todo-item__title_important";
-
-      default:
-        return "todo-item__title";
+    if (isDoneItem && isImportant) {
+      return "todo-item__title todo-item__title_done todo-item__title_important";
     }
+    if (isDoneItem && !isImportant) {
+      return "todo-item__title todo-item__title_done";
+    }
+    if (!isDoneItem && isImportant) {
+      return "todo-item__title todo-item__title_important";
+    }
+    return "todo-item__title";
   }
 
   function handleImportantButton() {
@@ -55,7 +54,7 @@ function TodoItem({ title, important }) {
           onClick={handleImportantButton}
         >
           <img
-            src={isImportant ? buttonImportantActive : buttonImportant}
+            src={isImportant ? importantActiveButton : importantButton}
             alt="mark as important."
             className={
               isDoneItem
@@ -67,7 +66,7 @@ function TodoItem({ title, important }) {
 
         <button type="button" className="todo-item__btn">
           <img
-            src={buttonTrash}
+            src={trashButton}
             alt="delete task."
             className="todo-item__icon"
             onClick={handleDeleteButton}
