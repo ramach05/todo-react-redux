@@ -5,9 +5,9 @@ import buttonTrash from "../../images/svg/delete_forever_white_24dp.svg";
 import buttonImportant from "../../images/svg/warning_amber_white_24dp.svg";
 import buttonImportantActive from "../../images/svg/warning-active_amber_orange_24dp.svg";
 
-function TodoItem() {
+function TodoItem({ title, important }) {
   const [isDoneItem, setIsDoneItem] = useState(false);
-  const [isImportant, setIsImportant] = useState(false);
+  const [isImportant, setIsImportant] = useState(important);
 
   function handleDone(e) {
     if (
@@ -19,10 +19,6 @@ function TodoItem() {
     if (e.target.className.includes("todo-item__title")) {
       return setIsDoneItem((isDoneItem) => !isDoneItem);
     }
-  }
-
-  function handleImportantButton() {
-    setIsImportant((isImportant) => !isImportant);
   }
 
   function renderTitleClassName() {
@@ -39,9 +35,17 @@ function TodoItem() {
     }
   }
 
+  function handleImportantButton() {
+    setIsImportant((isImportant) => !isImportant);
+  }
+
+  function handleDeleteButton() {
+    console.log("deleted :>> ", "deleted");
+  }
+
   return (
     <li className="todo-item" onClick={handleDone}>
-      <p className={renderTitleClassName()}>lorem</p>
+      <p className={renderTitleClassName()}>{title}</p>
 
       <div className="todo-item__wrapp-btn">
         <button
@@ -66,6 +70,7 @@ function TodoItem() {
             src={buttonTrash}
             alt="delete task."
             className="todo-item__icon"
+            onClick={handleDeleteButton}
           />
         </button>
       </div>

@@ -51,7 +51,6 @@ function Filter() {
               name="btnradio"
               id="btn-radio-active"
               autoComplete="off"
-              defaultChecked=""
             />
             <img
               src={buttonActive}
@@ -69,7 +68,6 @@ function Filter() {
               name="btnradio"
               id="btn-radio-done"
               autoComplete="off"
-              defaultChecked=""
             />
             <img
               src={buttonDone}
