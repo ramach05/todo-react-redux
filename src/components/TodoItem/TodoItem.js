@@ -5,7 +5,7 @@ import trashButton from "../../images/svg/delete_forever_white_24dp.svg";
 import importantButton from "../../images/svg/warning_amber_white_24dp.svg";
 import importantActiveButton from "../../images/svg/warning-active_amber_orange_24dp.svg";
 
-function TodoItem({ title, important }) {
+function TodoItem({ title, important, onDeleted }) {
   const [isDoneItem, setIsDoneItem] = useState(false);
   const [isImportant, setIsImportant] = useState(important);
 
@@ -62,15 +62,20 @@ function TodoItem({ title, important }) {
                 : "todo-item__icon"
             }
           />
+          {isDoneItem ? null : (
+            <div className="todo-item__btn-hint">mark as important</div>
+          )}
         </button>
 
-        <button type="button" className="todo-item__btn">
+        <button type="button" className="todo-item__btn" onClick={onDeleted}>
           <img
             src={trashButton}
             alt="delete task."
             className="todo-item__icon"
-            onClick={handleDeleteButton}
           />
+          {isDoneItem ? null : (
+            <div className="todo-item__btn-hint">delete</div>
+          )}
         </button>
       </div>
     </li>
