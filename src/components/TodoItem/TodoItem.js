@@ -73,9 +73,7 @@ function TodoItem({ title, important, onDeleted }) {
             alt="delete task."
             className="todo-item__icon"
           />
-          {isDoneItem ? null : (
-            <div className="todo-item__btn-hint">delete</div>
-          )}
+          <div className="todo-item__btn-hint">delete</div>
         </button>
       </div>
     </li>

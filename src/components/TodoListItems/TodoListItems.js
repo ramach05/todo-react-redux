@@ -11,10 +11,13 @@ const initialTodoData = [
 ];
 
 function TodoListItems() {
-  const [todoData, setTodoData] = useState(
-    initialTodoData.map((item) => {
-      const { id, title, important } = item;
+  const [todoData, setTodoData] = useState(initialTodoData);
 
+  console.log("todoData :>> ", todoData);
+
+  function renderTodoItems() {
+    return todoData.map((item) => {
+      const { id, title, important } = item;
       return (
         <TodoItem
           key={id}
@@ -23,16 +26,12 @@ function TodoListItems() {
           onDeleted={() => handleDeletItem(id)}
         />
       );
-    })
-  );
-
-  console.log("todoData :>> ", todoData);
+    });
+  }
 
   function handleDeletItem(id) {
     setTodoData((currTodos) => {
-      const targetIndex = currTodos.findIndex(
-        (item) => Number(item.key) === id
-      );
+      const targetIndex = currTodos.findIndex((item) => item.id === id);
       const newTodosBefore = currTodos.slice(0, targetIndex);
       const newTodosAfter = currTodos.slice(targetIndex + 1);
 
@@ -40,7 +39,7 @@ function TodoListItems() {
     });
   }
 
-  return <ul className="todo-list-items">{todoData}</ul>;
+  return <ul className="todo-list-items">{renderTodoItems()}</ul>;
 }
 
 export default TodoListItems;
