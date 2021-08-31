@@ -38,10 +38,6 @@ function TodoItem({ title, important, onDeleted }) {
     setIsImportant((isImportant) => !isImportant);
   }
 
-  function handleDeleteButton() {
-    console.log("deleted :>> ", "deleted");
-  }
-
   return (
     <li className="todo-item" onClick={handleDone}>
       <p className={renderTitleClassName()}>{title}</p>

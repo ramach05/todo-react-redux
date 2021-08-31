@@ -16,7 +16,7 @@ function Filter() {
       <input
         type="text"
         className="filter-form__input"
-        placeholder="Add Todos"
+        placeholder="Search Todos"
         autoComplete="off"
         id="inputDefault"
       />
