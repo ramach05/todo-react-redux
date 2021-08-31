@@ -1,14 +1,12 @@
 import React from "react";
 
 import "./TodoListItems.css";
-import TodoItem from "../TodoItem/TodoItem";
 
-function TodoListItems() {
+function TodoListItems({ renderTodoItems }) {
   return (
-    <ul className="todo-list-items">
-      <TodoItem />
-      <TodoItem />
-    </ul>
+    <section>
+      <ul className="todo-list-items">{renderTodoItems()}</ul>
+    </section>
   );
 }
 

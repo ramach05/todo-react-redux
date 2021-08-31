@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
 import "./TodoItem.css";
-import buttonTrash from "../../images/svg/delete_forever_white_24dp.svg";
-import buttonImportant from "../../images/svg/warning_amber_white_24dp.svg";
-import buttonImportantActive from "../../images/svg/warning-active_amber_orange_24dp.svg";
+import trashButton from "../../images/svg/delete_forever_white_24dp.svg";
+import importantButton from "../../images/svg/warning_amber_white_24dp.svg";
+import importantActiveButton from "../../images/svg/warning-active_amber_orange_24dp.svg";
 
-function TodoItem() {
+function TodoItem({ title, important, onDeleted }) {
   const [isDoneItem, setIsDoneItem] = useState(false);
-  const [isImportant, setIsImportant] = useState(false);
+  const [isImportant, setIsImportant] = useState(important);
 
   function handleDone(e) {
     if (
@@ -21,27 +21,26 @@ function TodoItem() {
     }
   }
 
+  function renderTitleClassName() {
+    if (isDoneItem && isImportant) {
+      return "todo-item__title todo-item__title_done todo-item__title_important";
+    }
+    if (isDoneItem && !isImportant) {
+      return "todo-item__title todo-item__title_done";
+    }
+    if (!isDoneItem && isImportant) {
+      return "todo-item__title todo-item__title_important";
+    }
+    return "todo-item__title";
+  }
+
   function handleImportantButton() {
     setIsImportant((isImportant) => !isImportant);
   }
 
-  function renderTitleClassName() {
-    switch (true) {
-      case isDoneItem && isImportant:
-        return "todo-item__title todo-item__title_done todo-item__title_important";
-      case isDoneItem && !isImportant:
-        return "todo-item__title todo-item__title_done";
-      case !isDoneItem && isImportant:
-        return "todo-item__title todo-item__title_important";
-
-      default:
-        return "todo-item__title";
-    }
-  }
-
   return (
     <li className="todo-item" onClick={handleDone}>
-      <p className={renderTitleClassName()}>lorem</p>
+      <p className={renderTitleClassName()}>{title}</p>
 
       <div className="todo-item__wrapp-btn">
         <button
@@ -51,7 +50,7 @@ function TodoItem() {
           onClick={handleImportantButton}
         >
           <img
-            src={isImportant ? buttonImportantActive : buttonImportant}
+            src={isImportant ? importantActiveButton : importantButton}
             alt="mark as important."
             className={
               isDoneItem
@@ -59,14 +58,18 @@ function TodoItem() {
                 : "todo-item__icon"
             }
           />
+          {isDoneItem ? null : (
+            <div className="todo-item__btn-hint">mark as important</div>
+          )}
         </button>
 
-        <button type="button" className="todo-item__btn">
+        <button type="button" className="todo-item__btn" onClick={onDeleted}>
           <img
-            src={buttonTrash}
+            src={trashButton}
             alt="delete task."
             className="todo-item__icon"
           />
+          <div className="todo-item__btn-hint">delete</div>
         </button>
       </div>
     </li>

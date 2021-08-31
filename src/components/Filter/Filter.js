@@ -7,12 +7,16 @@ import buttonAll from "../../images/svg/clear_all_white_24dp.svg";
 import buttonActive from "../../images/svg/check_white_24dp.svg";
 
 function Filter() {
+  function handleSubmitForm(e) {
+    e.preventDefault();
+  }
+
   return (
-    <form className="filter-form">
+    <form className="filter-form" onSubmit={handleSubmitForm}>
       <input
         type="text"
         className="filter-form__input"
-        placeholder="Add Todos"
+        placeholder="Search Todos"
         autoComplete="off"
         id="inputDefault"
       />
@@ -51,7 +55,6 @@ function Filter() {
               name="btnradio"
               id="btn-radio-active"
               autoComplete="off"
-              defaultChecked=""
             />
             <img
               src={buttonActive}
@@ -69,7 +72,6 @@ function Filter() {
               name="btnradio"
               id="btn-radio-done"
               autoComplete="off"
-              defaultChecked=""
             />
             <img
               src={buttonDone}
