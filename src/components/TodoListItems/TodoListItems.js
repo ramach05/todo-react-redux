@@ -3,13 +3,7 @@ import React, { useState } from "react";
 import "./TodoListItems.css";
 import TodoItem from "../TodoItem/TodoItem";
 import todoAddIcon from "../../images/svg/task_add_24dp.svg";
-
-const initialTodoData = [
-  { id: 1, title: "Сходить в магазин", important: false },
-  { id: 2, title: "Позвонить маме", important: true },
-  { id: 3, title: "Сделать ДЗ", important: false },
-  { id: 4, title: "Погладить рубашку", important: false },
-];
+import { initialTodoData } from "./../../utils/utils";
 
 let newTodoId = 100; // начало отсчета id новых задач (для передачи его в key)
 
