@@ -3,8 +3,11 @@ import React from "react";
 import "./Filter.css";
 
 import buttonDone from "../../images/svg/task_alt_white_24dp.svg";
+import buttonDoneActive from "../../images/svg/task_alt_orange_24dp.svg";
 import buttonAll from "../../images/svg/clear_all_white_24dp.svg";
+import buttonAllActive from "../../images/svg/clear_all_orange_24dp.svg";
 import buttonActive from "../../images/svg/check_white_24dp.svg";
+import buttonActiveActive from "../../images/svg/check_orange_24dp.svg";
 
 function Filter() {
   function handleSubmitForm(e) {
@@ -41,7 +44,7 @@ function Filter() {
               alt="all todos."
               className="filter-form__icon"
             />
-            All
+            <div className="filter-form__title">All Todos</div>
           </label>
         </li>
         <li className="filter-form__radio-li">
@@ -61,7 +64,7 @@ function Filter() {
               alt="active todos."
               className="filter-form__icon"
             />
-            Active
+            <div className="filter-form__title">Active</div>
           </label>
         </li>
         <li className="filter-form__radio-li">
@@ -78,7 +81,7 @@ function Filter() {
               alt="done todos."
               className="filter-form__icon"
             />
-            Done
+            <div className="filter-form__title">Done</div>
           </label>
         </li>
       </ul>
