@@ -81,7 +81,7 @@
   color: white;
 
   position: absolute;
-  top: calc(-20px + (-28 - -20) * ((100vw - 320px) / (1280 - 320)));
+  top: calc(-26px + (-32 - -26) * ((100vw - 320px) / (1280 - 320)));
   left: 10px;
   opacity: 0;
 
@@ -104,7 +104,6 @@
 .todo-item__icon {
   width: 30px;
   height: 30px;
-  border-radius: 4px;
 
   transition: transform 0.2s ease;
 }
