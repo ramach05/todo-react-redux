@@ -32,30 +32,23 @@ function AppMain() {
     });
   }
 
+  function toggleProperty(arr, id, propName) {
+    const targetIndex = arr.findIndex((item) => item.id === id);
+    const targetItem = arr[targetIndex];
+    const newTargetItem = { ...targetItem, [propName]: !targetItem[propName] };
+
+    const arrBefore = arr.slice(0, targetIndex);
+    const arrAfter = arr.slice(targetIndex + 1);
+
+    return [...arrBefore, newTargetItem, ...arrAfter];
+  }
+
   function handleToggleDone(id) {
-    setTodoData((currTodos) => {
-      const targetIndex = currTodos.findIndex((item) => item.id === id);
-      const targetTodo = currTodos[targetIndex];
-      const newTargetTodo = { ...targetTodo, done: !targetTodo.done };
-
-      const todosBefore = currTodos.slice(0, targetIndex);
-      const todosAfter = currTodos.slice(targetIndex + 1);
-
-      return [...todosBefore, newTargetTodo, ...todosAfter];
-    });
+    setTodoData((currTodos) => toggleProperty(currTodos, id, "done"));
   }
 
   function handleToggleImportant(id) {
-    setTodoData((currTodos) => {
-      const targetIndex = currTodos.findIndex((item) => item.id === id);
-      const targetTodo = currTodos[targetIndex];
-      const newTargetTodo = { ...targetTodo, important: !targetTodo.important };
-
-      const todosBefore = currTodos.slice(0, targetIndex);
-      const todosAfter = currTodos.slice(targetIndex + 1);
-
-      return [...todosBefore, newTargetTodo, ...todosAfter];
-    });
+    setTodoData((currTodos) => toggleProperty(currTodos, id, "important"));
   }
 
   function createNewTodoItem(title) {

@@ -13,9 +13,6 @@ function TodoItem({
   onToggleDone,
   onToggleImportant,
 }) {
-  // const [isDoneItem, setIsDoneItem] = useState(false);
-  // const [isImportant, setIsImportant] = useState(isImportant);
-
   function handleToggleDone(e) {
     if (
       e.target.className === "todo-item" ||
