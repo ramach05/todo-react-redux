@@ -19,7 +19,7 @@ export const initialTodoData = [
   },
   {
     id: 4,
-    title: "Погладить рубашку",
+    title: "Погладить штаны",
     important: false,
     done: false,
   },

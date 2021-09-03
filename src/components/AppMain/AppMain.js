@@ -14,7 +14,6 @@ function AppMain() {
   const [todoData, setTodoData] = useState(initialTodoData);
 
   console.log("todoData :>> ", todoData);
-  console.log("newTodoId :>> ", newTodoId);
 
   function renderTodoItems() {
     return todoData.map((item) => {
@@ -30,6 +29,21 @@ function AppMain() {
     });
   }
 
+  function createNewTodoItem(title) {
+    return {
+      id: newTodoId++,
+      title: title.trim(),
+      important: false,
+      done: false,
+    };
+  }
+
+  function handleAddTodo(title) {
+    setTodoData((currTodos) => {
+      return [...currTodos, createNewTodoItem(title)];
+    });
+  }
+
   function handleDeletItem(id) {
     setTodoData((currTodos) => {
       const targetIndex = currTodos.findIndex((item) => item.id === id);
@@ -40,28 +54,13 @@ function AppMain() {
     });
   }
 
-  function handleAddTodo(text) {
-    setTodoData((currTodos) => {
-      return [
-        ...currTodos,
-        {
-          id: newTodoId++,
-          title: text.trim(),
-          important: false,
-        },
-      ];
-    });
-  }
-
   return (
     <main className="main">
       <article>
-        <section>
-          <Filter />
-          <CounterTodos />
-          <TodoListItems renderTodoItems={renderTodoItems} />
-          <AddSection handleAddTodo={handleAddTodo} />
-        </section>
+        <Filter />
+        <CounterTodos />
+        <TodoListItems renderTodoItems={renderTodoItems} />
+        <AddSection handleAddTodo={handleAddTodo} />
       </article>
     </main>
   );

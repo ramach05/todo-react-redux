@@ -67,10 +67,11 @@
   cursor: pointer;
 }
 .todo-item__btn:hover .todo-item__btn-hint {
-  opacity: 1;
   width: max-content;
+  opacity: 1;
+  transform: translateX(-10px);
 
-  transition: opacity 0.3s ease 0.5s;
+  transition: opacity 0.3s ease 0.5s, transform 0.3s ease 0.5s;
 }
 
 .todo-item__btn-hint {
@@ -81,7 +82,7 @@
 
   position: absolute;
   top: calc(-20px + (-28 - -20) * ((100vw - 320px) / (1280 - 320)));
-  left: 0;
+  left: 10px;
   opacity: 0;
 
   margin: 0;
