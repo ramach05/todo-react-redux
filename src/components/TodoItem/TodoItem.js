@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "./TodoItem.css";
 import trashButton from "../../images/svg/delete_forever_white_24dp.svg";

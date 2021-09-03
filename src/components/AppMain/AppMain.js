@@ -13,6 +13,11 @@ let newTodoId = 100; // начало отсчета id новых задач (д
 function AppMain() {
   const [todoData, setTodoData] = useState(initialTodoData);
 
+  const countTodos = {
+    countTotal: todoData.length,
+    countDone: todoData.filter((item) => item.done).length,
+  };
+
   console.log("todoData :>> ", todoData);
 
   function renderTodoItems() {
@@ -82,7 +87,7 @@ function AppMain() {
     <main className="main">
       <article>
         <Filter />
-        <CounterTodos />
+        <CounterTodos countTodos={countTodos} />
         <TodoListItems renderTodoItems={renderTodoItems} />
         <AddSection onAddItem={addItem} />
       </article>
