@@ -8,7 +8,7 @@ function AddSection({ onAddItem }) {
       <button
         type="button"
         className="todo-item__btn"
-        onClick={() => onAddItem("hello world")}
+        onClick={() => onAddItem("        hello      world")}
       >
         <img src={todoAddIcon} alt="add todo." className="todo-item__icon" />
         <div className="todo-item__btn-hint">add Todo</div>
