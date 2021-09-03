@@ -6,16 +6,22 @@ import todoAddIcon from "../../images/svg/task_add_24dp.svg";
 function AddSection({ onAddItem }) {
   const [inputValue, setInputValue] = useState("");
 
+  const regexpWords = /[a-zA-Z]{3,}/gim;
+  const regexpSpaces = /[\s]{2,}/gim;
+
   function handleChangeAddInput(e) {
     setInputValue(e.target.value);
   }
 
   function handleSubmitAddForm(e) {
     e.preventDefault();
-    setInputValue("");
-    e.target.reset();
 
-    onAddItem(inputValue);
+    if (regexpWords.test(inputValue)) {
+      onAddItem(inputValue.replace(regexpSpaces, " ").trim());
+      setInputValue("");
+      e.target.reset();
+    } else {
+    }
   }
 
   return (

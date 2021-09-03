@@ -57,11 +57,9 @@ function AppMain() {
   }
 
   function createNewTodoItem(title) {
-    const regexp = /[\s]{2,}/gim;
-
     return {
       id: newTodoId++,
-      title: title.replace(regexp, " ").trim(),
+      title,
       important: false,
       done: false,
     };
