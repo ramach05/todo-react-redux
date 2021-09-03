@@ -19,11 +19,11 @@ function CounterTodos({ countTodos }) {
     if (countTotal === 0) {
       return "Your Todo List is empty";
     }
-    if (isDone) {
-      return `All ${countTotal} todos are done`;
-    }
     if (countTotal === 1 && isDone) {
       return "Your todo is done";
+    }
+    if (isDone) {
+      return `All ${countTotal} todos are done`;
     }
     return `${
       countTotal - countDone
