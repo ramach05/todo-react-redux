@@ -17,15 +17,44 @@ function AppMain() {
 
   function renderTodoItems() {
     return todoData.map((item) => {
-      const { id, title, important } = item;
+      const { id, title, important, done } = item;
       return (
         <TodoItem
           key={id}
           title={title}
-          important={important}
-          onDeleted={() => handleDeletItem(id)}
+          isImportant={important}
+          isDone={done}
+          onDeleted={() => deletItem(id)}
+          onToggleDone={() => handleToggleDone(id)}
+          onToggleImportant={() => handleToggleImportant(id)}
         />
       );
+    });
+  }
+
+  function handleToggleDone(id) {
+    setTodoData((currTodos) => {
+      const targetIndex = currTodos.findIndex((item) => item.id === id);
+      const targetTodo = currTodos[targetIndex];
+      const newTargetTodo = { ...targetTodo, done: !targetTodo.done };
+
+      const todosBefore = currTodos.slice(0, targetIndex);
+      const todosAfter = currTodos.slice(targetIndex + 1);
+
+      return [...todosBefore, newTargetTodo, ...todosAfter];
+    });
+  }
+
+  function handleToggleImportant(id) {
+    setTodoData((currTodos) => {
+      const targetIndex = currTodos.findIndex((item) => item.id === id);
+      const targetTodo = currTodos[targetIndex];
+      const newTargetTodo = { ...targetTodo, important: !targetTodo.important };
+
+      const todosBefore = currTodos.slice(0, targetIndex);
+      const todosAfter = currTodos.slice(targetIndex + 1);
+
+      return [...todosBefore, newTargetTodo, ...todosAfter];
     });
   }
 
@@ -38,13 +67,13 @@ function AppMain() {
     };
   }
 
-  function handleAddTodo(title) {
+  function addItem(title) {
     setTodoData((currTodos) => {
       return [...currTodos, createNewTodoItem(title)];
     });
   }
 
-  function handleDeletItem(id) {
+  function deletItem(id) {
     setTodoData((currTodos) => {
       const targetIndex = currTodos.findIndex((item) => item.id === id);
       const newTodosBefore = currTodos.slice(0, targetIndex);
@@ -60,7 +89,7 @@ function AppMain() {
         <Filter />
         <CounterTodos />
         <TodoListItems renderTodoItems={renderTodoItems} />
-        <AddSection handleAddTodo={handleAddTodo} />
+        <AddSection onAddItem={addItem} />
       </article>
     </main>
   );
