@@ -24,3 +24,7 @@ export const initialTodoData = [
     done: false,
   },
 ];
+
+export const errTextCorrectTodo = "Enter the correct Todo!";
+export const errTextMaxTodos = "You can create only 20 Todos!";
+export const errTextMaxCharacters = "Maximum 100 characters!";
