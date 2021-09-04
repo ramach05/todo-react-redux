@@ -21,7 +21,7 @@ function Filter() {
         className="filter-form__input"
         placeholder="Search Todos"
         autoComplete="off"
-        id="inputDefault"
+        maxLength={100}
       />
 
       <ul

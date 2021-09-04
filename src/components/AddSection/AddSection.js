@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react";
 
 import "./AddSection.css";
 import todoAddIcon from "../../images/svg/task_add_24dp.svg";
+import {
+  errTextCorrectTodo,
+  errTextMaxCharacters,
+  errTextMaxTodos,
+} from "../../utils/utils";
 
 function AddSection({ onAddItem, countTotal }) {
   const [inputValue, setInputValue] = useState("");
@@ -11,10 +16,6 @@ function AddSection({ onAddItem, countTotal }) {
   const regexpWords = /[^\s\d!@#$%^&*()_\-+.,~`"'{}[\]№;:?|\\\/]{3,}/gim; // eslint-disable-line no-useless-escape
   const regexpSpaces = /[\s]{2,}/gim;
 
-  const errText1 = "Enter the correct Todo!";
-  const errText2 = "You can create only 20 Todos!";
-  const errText3 = "Maximum 100 characters!";
-
   useEffect(() => {
     if (inputValue.length >= 1) {
       setIsButtonEnable(true);
@@ -23,8 +24,8 @@ function AddSection({ onAddItem, countTotal }) {
     }
 
     if (inputValue.length === 100) {
-      setError(errText3);
-    } else if (inputValue.length === 99 && error === errText3) {
+      setError(errTextMaxCharacters);
+    } else if (inputValue.length === 99 && error === errTextMaxCharacters) {
       setError("");
     }
 
@@ -41,16 +42,20 @@ function AddSection({ onAddItem, countTotal }) {
     e.preventDefault();
 
     if (countTotal === 20) {
-      return setError(errText2);
+      return setError(errTextMaxTodos);
     }
     if (regexpWords.test(inputValue)) {
-      onAddItem(inputValue.replace(regexpSpaces, " ").trim());
+      const titleRegexSpaces = inputValue.replace(regexpSpaces, " ").trim();
+      const resTitle =
+        titleRegexSpaces[0].toUpperCase() + titleRegexSpaces.slice(1);
 
-      setError("");
+      onAddItem(resTitle);
+
       e.target.reset();
-      return setInputValue("");
+      setInputValue("");
+      return setError("");
     } else {
-      return setError(errText1);
+      return setError(errTextCorrectTodo);
     }
   }
 

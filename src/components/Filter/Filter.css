@@ -10,6 +10,7 @@
   font-family: Caveat, sans-serif;
   font-weight: normal;
   font-size: calc(20px + (26 - 20) * ((100vw - 320px) / (1280 - 320)));
+  color: #ff9933;
 
   width: -webkit-fill-available;
   margin: 0 0 calc(10px + (20 - 10) * ((100vw - 320px) / (1280 - 320))) 0;
