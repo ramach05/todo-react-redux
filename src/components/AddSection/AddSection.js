@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import "./AddSection.css";
 import todoAddIcon from "../../images/svg/task_add_24dp.svg";
 
-function AddSection({ onAddItem }) {
+function AddSection({ onAddItem, countTotal }) {
   const [inputValue, setInputValue] = useState("");
+  const [error, setError] = useState("");
 
   const regexpWords = /[a-zA-Z]{3,}/gim;
   const regexpSpaces = /[\s]{2,}/gim;
@@ -16,16 +17,24 @@ function AddSection({ onAddItem }) {
   function handleSubmitAddForm(e) {
     e.preventDefault();
 
+    if (countTotal === 20) {
+      return setError("You can create only 20 Todos!");
+    }
     if (regexpWords.test(inputValue)) {
       onAddItem(inputValue.replace(regexpSpaces, " ").trim());
-      setInputValue("");
+
+      setError("");
       e.target.reset();
+      return setInputValue("");
     } else {
+      return setError("Enter the correct Todo!");
     }
   }
 
   return (
     <section>
+      <p className="add-section__err-title">{error}</p>
+
       <form className="add-section__form" onSubmit={handleSubmitAddForm}>
         <input
           type="text"

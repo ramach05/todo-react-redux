@@ -1,3 +1,19 @@
+.add-section__err-title {
+  font-family: Caveat, sans-serif;
+  font-weight: normal;
+  font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1280 - 320)));
+  color: tomato;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  margin: 0;
+  padding: 0;
+  width: calc(82% + (108 - 82) * ((100vw - 320px) / (1280 - 320)));
+  height: calc(24px + (30 - 24) * ((100vw - 320px) / (1280 - 320)));
+}
+
 .add-section__form {
   display: flex;
   align-items: center;

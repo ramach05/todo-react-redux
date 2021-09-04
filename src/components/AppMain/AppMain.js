@@ -87,7 +87,7 @@ function AppMain() {
         <Filter />
         <CounterTodos countTodos={countTodos} />
         <TodoListItems renderTodoItems={renderTodoItems} />
-        <AddSection onAddItem={addItem} />
+        <AddSection onAddItem={addItem} countTotal={countTodos.countTotal} />
       </article>
     </main>
   );
