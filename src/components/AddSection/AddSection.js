@@ -8,8 +8,12 @@ function AddSection({ onAddItem, countTotal }) {
   const [error, setError] = useState("");
   const [isButtonEnable, setIsButtonEnable] = useState(false);
 
-  const regexpWords = /[a-zA-Z]{3,}/gim;
+  const regexpWords = /[^\s\d!@#$%^&*()_\-+.,~`"'{}[\]№;:?|\\\/]{3,}/gim; // eslint-disable-line no-useless-escape
   const regexpSpaces = /[\s]{2,}/gim;
+
+  const errText1 = "Enter the correct Todo!";
+  const errText2 = "You can create only 20 Todos!";
+  const errText3 = "Maximum 100 characters!";
 
   useEffect(() => {
     if (inputValue.length >= 1) {
@@ -18,10 +22,16 @@ function AddSection({ onAddItem, countTotal }) {
       setIsButtonEnable(false);
     }
 
-    if (inputValue.length >= 100) {
+    if (inputValue.length === 100) {
+      setError(errText3);
+    } else if (inputValue.length === 99 && error === errText3) {
       setError("");
     }
-  }, [inputValue]);
+
+    if (inputValue.length === 0) {
+      return setError("");
+    }
+  }, [inputValue, error]);
 
   function handleChangeAddInput(e) {
     setInputValue(e.target.value);
@@ -31,7 +41,7 @@ function AddSection({ onAddItem, countTotal }) {
     e.preventDefault();
 
     if (countTotal === 20) {
-      return setError("You can create only 20 Todos!");
+      return setError(errText2);
     }
     if (regexpWords.test(inputValue)) {
       onAddItem(inputValue.replace(regexpSpaces, " ").trim());
@@ -40,7 +50,7 @@ function AddSection({ onAddItem, countTotal }) {
       e.target.reset();
       return setInputValue("");
     } else {
-      return setError("Enter the correct Todo!");
+      return setError(errText1);
     }
   }
 
@@ -54,6 +64,7 @@ function AddSection({ onAddItem, countTotal }) {
           className="add-section__input"
           placeholder="Add Todo"
           autoComplete="off"
+          maxLength={100}
           onChange={handleChangeAddInput}
         />
 
