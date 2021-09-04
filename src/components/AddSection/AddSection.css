@@ -19,16 +19,6 @@
   align-items: center;
 }
 
-.add-section__icon {
-  width: calc(38px + (48 - 38) * ((100vw - 320px) / (1280 - 320)));
-  height: auto;
-
-  transition: transform 0.2s ease;
-}
-.add-section__icon:hover {
-  transform: scale(1.1);
-}
-
 .add-section__input {
   font-family: Caveat, sans-serif;
   font-weight: normal;

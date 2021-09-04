@@ -50,11 +50,7 @@ function TodoItem({
           <img
             src={isImportant ? importantActiveButton : importantButton}
             alt="mark as important."
-            className={
-              isDone
-                ? "todo-item__icon todo-item__icon_important_done"
-                : "todo-item__icon"
-            }
+            className={isDone ? "icon icon_disable" : "icon"}
           />
           {isDone ? null : (
             <div className="todo-item__btn-hint">mark as important</div>
@@ -62,11 +58,7 @@ function TodoItem({
         </button>
 
         <button type="button" className="todo-item__btn" onClick={onDeleted}>
-          <img
-            src={trashButton}
-            alt="delete task."
-            className="todo-item__icon"
-          />
+          <img src={trashButton} alt="delete task." className="icon" />
           <div className="todo-item__btn-hint">delete</div>
         </button>
       </div>

@@ -20,7 +20,7 @@ function CounterTodos({ countTodos }) {
       return "Your Todo List is empty";
     }
     if (countTotal === 1 && isDone) {
-      return "Your todo is done";
+      return "Your Todo is done";
     }
     if (isDone) {
       return `All ${countTotal} todos are done`;

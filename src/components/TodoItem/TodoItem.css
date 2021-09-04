@@ -101,20 +101,30 @@
   left: -10px;
 }
 
-.todo-item__icon {
+.icon {
   width: 30px;
   height: 30px;
 
   transition: transform 0.2s ease;
 }
-.todo-item__icon:hover {
+.icon:hover {
   transform: scale(1.2);
 }
 
-.todo-item__icon_important_done {
+.icon_add-section {
+  width: calc(38px + (48 - 38) * ((100vw - 320px) / (1280 - 320)));
+  height: auto;
+
+  transition: transform 0.2s ease;
+}
+.icon_add-section:hover {
+  transform: scale(1.1);
+}
+
+.icon_disable {
   cursor: context-menu;
   opacity: 0.3;
 }
-.todo-item__icon_important_done:hover {
+.icon_disable:hover {
   transform: scale(1);
 }
