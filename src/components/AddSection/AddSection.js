@@ -24,11 +24,11 @@ function AddSection({ onAddItem, countTotal }) {
     }
 
     if (inputValue.length === 100) {
-      setError(errTextMaxCharacters);
-    } else if (inputValue.length === 99 && error === errTextMaxCharacters) {
-      setError("");
+      return setError(errTextMaxCharacters);
     }
-
+    if (inputValue.length === 99 && error === errTextMaxCharacters) {
+      return setError("");
+    }
     if (inputValue.length === 0) {
       return setError("");
     }
@@ -51,12 +51,10 @@ function AddSection({ onAddItem, countTotal }) {
 
       onAddItem(resTitle);
 
-      e.target.reset();
       setInputValue("");
       return setError("");
-    } else {
-      return setError(errTextCorrectTodo);
     }
+    return setError(errTextCorrectTodo);
   }
 
   return (
@@ -71,6 +69,7 @@ function AddSection({ onAddItem, countTotal }) {
           autoComplete="off"
           maxLength={100}
           onChange={handleChangeAddInput}
+          value={inputValue}
         />
 
         {isButtonEnable ? (
