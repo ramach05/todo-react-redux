@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./AppMain.css";
 import TodoListItems from "../TodoListItems/TodoListItems";
@@ -12,6 +12,32 @@ let newTodoId = 100; // начало отсчета id новых задач (д
 
 function AppMain() {
   const [todoData, setTodoData] = useState(initialTodoData);
+  const [filter, setFilter] = useState({
+    isFiltered: false,
+    filterText: "",
+  });
+
+  useEffect(() => {
+    const { isFiltered, filterText } = filter;
+
+    if (isFiltered && filterText) {
+      // return
+    }
+    if (isFiltered && !filterText) {
+      // return ;
+    }
+    if (!isFiltered && filterText) {
+      return setTodoData(
+        initialTodoData.filter((item) =>
+          item.title.toLowerCase().includes(filterText)
+        )
+      );
+    }
+
+    return setTodoData(initialTodoData);
+  }, [filter]);
+
+  console.log("filter :>> ", filter);
 
   const countTodos = {
     countTotal: todoData.length,
@@ -84,7 +110,7 @@ function AppMain() {
   return (
     <main className="main">
       <article>
-        <Filter />
+        <Filter setFilter={setFilter} />
         <CounterTodos countTodos={countTodos} />
         <TodoListItems renderTodoItems={renderTodoItems} />
         <AddSection onAddItem={addItem} countTotal={countTodos.countTotal} />

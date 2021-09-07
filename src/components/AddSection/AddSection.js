@@ -79,7 +79,7 @@ function AddSection({ onAddItem, countTotal }) {
               alt="add todo."
               className="icon icon_add-section"
             />
-            <div className="todo-item__btn-hint">add Todo</div>
+            <p className="todo-item__btn-hint">add Todo</p>
           </button>
         ) : (
           <button type="submit" disabled className="todo-item__btn">

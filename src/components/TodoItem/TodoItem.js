@@ -53,13 +53,13 @@ function TodoItem({
             className={isDone ? "icon icon_disable" : "icon"}
           />
           {isDone ? null : (
-            <div className="todo-item__btn-hint">mark as important</div>
+            <p className="todo-item__btn-hint">mark as important</p>
           )}
         </button>
 
         <button type="button" className="todo-item__btn" onClick={onDeleted}>
           <img src={trashButton} alt="delete task." className="icon" />
-          <div className="todo-item__btn-hint">delete</div>
+          <p className="todo-item__btn-hint">delete</p>
         </button>
       </div>
     </li>
