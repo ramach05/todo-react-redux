@@ -6,38 +6,21 @@ import Filter from "../Filter/Filter";
 import CounterTodos from "../CounterTodos/CounterTodos";
 import AddSection from "../AddSection/AddSection";
 import TodoItem from "../TodoItem/TodoItem";
-import { initialTodoData } from "./../../utils/utils";
+import {
+  activeRadioBtnName,
+  doneRadioBtnName,
+  initialTodoData,
+} from "./../../utils/utils";
 
 let newTodoId = 100; // начало отсчета id новых задач (для передачи его в key)
 
 function AppMain() {
   const [todoData, setTodoData] = useState(initialTodoData);
   const [filter, setFilter] = useState({
-    isFiltered: false,
+    filteredRadioValue: "",
     filterText: "",
   });
-
-  useEffect(() => {
-    const { isFiltered, filterText } = filter;
-
-    if (isFiltered && filterText) {
-      // return
-    }
-    if (isFiltered && !filterText) {
-      // return ;
-    }
-    if (!isFiltered && filterText) {
-      return setTodoData(
-        initialTodoData.filter((item) =>
-          item.title.toLowerCase().includes(filterText)
-        )
-      );
-    }
-
-    return setTodoData(initialTodoData);
-  }, [filter]);
-
-  console.log("filter :>> ", filter);
+  const [filteredTodoData, setFilteredTodoData] = useState(false);
 
   const countTodos = {
     countTotal: todoData.length,
@@ -46,21 +29,72 @@ function AppMain() {
 
   console.log("todoData :>> ", todoData);
 
-  function renderTodoItems() {
-    return todoData.map((item) => {
-      const { id, title, important, done } = item;
-      return (
-        <TodoItem
-          key={id}
-          title={title}
-          isImportant={important}
-          isDone={done}
-          onDeleted={() => deletItem(id)}
-          onToggleDone={() => handleToggleDone(id)}
-          onToggleImportant={() => handleToggleImportant(id)}
-        />
+  useEffect(() => {
+    const { filteredRadioValue, filterText } = filter;
+
+    if (filteredRadioValue === doneRadioBtnName && !filterText) {
+      return setFilteredTodoData(todoData.filter((i) => i.done));
+    }
+    if (filteredRadioValue === activeRadioBtnName && !filterText) {
+      return setFilteredTodoData(todoData.filter((i) => !i.done));
+    }
+    if (!filteredRadioValue && filterText) {
+      return setFilteredTodoData(
+        todoData.filter((i) => i.title.toLowerCase().includes(filterText))
       );
-    });
+    }
+    if (filteredRadioValue === doneRadioBtnName && filterText) {
+      return setFilteredTodoData(
+        todoData.filter(
+          (i) => i.done && i.title.toLowerCase().includes(filterText)
+        )
+      );
+    }
+    if (filteredRadioValue === activeRadioBtnName && filterText) {
+      return setFilteredTodoData(
+        todoData.filter(
+          (i) => !i.done && i.title.toLowerCase().includes(filterText)
+        )
+      );
+    }
+
+    setFilteredTodoData(false);
+  }, [filter, todoData]);
+
+  function renderTodoItems() {
+    if (filteredTodoData) {
+      return filteredTodoData.map((item) => {
+        const { id, title, important, done } = item;
+
+        return (
+          <TodoItem
+            key={id}
+            title={title}
+            isImportant={important}
+            isDone={done}
+            onDeleted={() => deletItem(id)}
+            onToggleDone={() => handleToggleDone(id)}
+            onToggleImportant={() => handleToggleImportant(id)}
+          />
+        );
+      });
+    } else {
+      return todoData.map((item) => {
+        const { id, title, important, done } = item;
+
+        return (
+          <TodoItem
+            key={id}
+            title={title}
+            isImportant={important}
+            isDone={done}
+            onDeleted={() => deletItem(id)}
+            onToggleDone={() => handleToggleDone(id)}
+            onToggleImportant={() => handleToggleImportant(id)}
+          />
+        );
+      });
+    }
   }
 
   function toggleProperty(arr, id, propName) {

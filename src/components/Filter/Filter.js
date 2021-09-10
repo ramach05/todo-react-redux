@@ -3,37 +3,38 @@ import React, { useEffect, useState } from "react";
 import "./Filter.css";
 
 import buttonDone from "../../images/svg/task_alt_white_24dp.svg";
-import buttonDoneActive from "../../images/svg/task_alt_orange_24dp.svg";
 import buttonAll from "../../images/svg/clear_all_white_24dp.svg";
-import buttonAllActive from "../../images/svg/clear_all_orange_24dp.svg";
 import buttonActive from "../../images/svg/check_white_24dp.svg";
-import buttonActiveActive from "../../images/svg/check_orange_24dp.svg";
 import filterResetBtn from "../../images/svg/reset_filter_24dp.svg";
+import {
+  activeRadioBtnName,
+  allRadioBtnName,
+  doneRadioBtnName,
+} from "../../utils/utils";
 
 function Filter({ setFilter }) {
   const [inputFilterValue, setInputFilterValue] = useState("");
   const [isResetBtnEnable, setIsResetBtnEnable] = useState(false);
 
   // const regexpTrimSpaces = /^[\s]+|[\s]+$/gim;
-  const regexpDoubleSpaces = /[\s]{2,}/gim;
-  const regexpSpaces = /^[\s]+|[\s]+$|[\s]{2,}/gim;
+  // const regexpSpaces = /^[\s]+|[\s]+$|[\s]{2,}/gim;
 
   useEffect(() => {
     if (inputFilterValue) {
+      const regexpDoubleSpaces = /[\s]{2,}/gim;
       setIsResetBtnEnable(true);
 
-      setFilter((prevState) => ({
+      return setFilter((prevState) => ({
         ...prevState,
         filterText: inputFilterValue
           .replace(regexpDoubleSpaces, " ")
           .trim()
           .toLowerCase(),
       }));
-    } else {
-      setIsResetBtnEnable(false);
-
-      setFilter((prevState) => ({ ...prevState, filterText: "" }));
     }
+
+    setIsResetBtnEnable(false);
+    return setFilter((prevState) => ({ ...prevState, filterText: "" }));
   }, [inputFilterValue, setFilter]);
 
   function handleSubmitForm(e) {
@@ -41,16 +42,35 @@ function Filter({ setFilter }) {
   }
 
   function handleChangeInputFilter(e) {
-    // if (e.target.value.test(regexpTrimSpaces)) {
-    //   return setInputFilterValue(e.target.value.trim());
-    // }
-    // setInputFilterValue(e.target.value.replace(regexpSpaces, " "));
     setInputFilterValue(e.target.value);
   }
 
   function handleResetFilter() {
     setInputFilterValue("");
     setFilter((prevState) => ({ ...prevState, filterText: "" }));
+  }
+
+  function handleClickBtnRadio(e) {
+    const { id } = e.target;
+
+    if (id === `btn-radio-${allRadioBtnName}`) {
+      setFilter((prevState) => ({
+        ...prevState,
+        filteredRadioValue: "",
+      }));
+    }
+    if (id === `btn-radio-${activeRadioBtnName}`) {
+      setFilter((prevState) => ({
+        ...prevState,
+        filteredRadioValue: activeRadioBtnName,
+      }));
+    }
+    if (id === `btn-radio-${doneRadioBtnName}`) {
+      setFilter((prevState) => ({
+        ...prevState,
+        filteredRadioValue: doneRadioBtnName,
+      }));
+    }
   }
 
   return (
@@ -96,55 +116,67 @@ function Filter({ setFilter }) {
         aria-label="Basic radio toggle button group"
       >
         <li className="filter-form__radio-li">
-          <label className="filter-form__radio-label" htmlFor="btn-radio-all">
-            <input
-              type="radio"
-              className="filter-form__radio"
-              name="btnradio"
-              id="btn-radio-all"
-              autoComplete="off"
-              defaultChecked="true"
-            />
-            <img
-              src={buttonAll}
-              alt="all todos."
-              className="filter-form__icon"
-            />
-            <div className="filter-form__title">All Todos</div>
-          </label>
-        </li>
-        <li className="filter-form__radio-li">
           <label
             className="filter-form__radio-label"
-            htmlFor="btn-radio-active"
+            htmlFor={`btn-radio-${allRadioBtnName}`}
           >
             <input
               type="radio"
               className="filter-form__radio"
               name="btnradio"
-              id="btn-radio-active"
+              id={`btn-radio-${allRadioBtnName}`}
               autoComplete="off"
+              defaultChecked="true"
+              onClick={handleClickBtnRadio}
             />
             <img
+              src={buttonAll}
+              alt="all todos btn."
+              className="filter-form__icon"
+            />
+            <div className="filter-form__title">All Todos</div>
+          </label>
+        </li>
+
+        <li className="filter-form__radio-li">
+          <label
+            className="filter-form__radio-label"
+            htmlFor={`btn-radio-${activeRadioBtnName}`}
+          >
+            <input
+              type="radio"
+              className="filter-form__radio"
+              name="btnradio"
+              id={`btn-radio-${activeRadioBtnName}`}
+              autoComplete="off"
+              onClick={handleClickBtnRadio}
+            />
+
+            <img
               src={buttonActive}
-              alt="active todos."
+              alt="active todos btn."
               className="filter-form__icon"
             />
             <div className="filter-form__title">Active</div>
           </label>
         </li>
+
         <li className="filter-form__radio-li">
-          <label className="filter-form__radio-label" htmlFor="btn-radio-done">
+          <label
+            className="filter-form__radio-label"
+            htmlFor={`btn-radio-${doneRadioBtnName}`}
+          >
             <input
               type="radio"
               className="filter-form__radio"
               name="btnradio"
-              id="btn-radio-done"
+              id={`btn-radio-${doneRadioBtnName}`}
               autoComplete="off"
+              onClick={handleClickBtnRadio}
             />
             <img
               src={buttonDone}
-              alt="done todos."
+              alt="done todos btn."
               className="filter-form__icon"
             />
             <div className="filter-form__title">Done</div>
