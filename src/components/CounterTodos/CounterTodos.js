@@ -23,7 +23,7 @@ function CounterTodos({ countTodos }) {
       return "Your Todo is done";
     }
     if (isDone) {
-      return `All ${countTotal} todos are done`;
+      return `All ${countTotal} Todos are done`;
     }
     return `${
       countTotal - countDone
