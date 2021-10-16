@@ -55,6 +55,7 @@
 }
 
 .filter-form__radio {
+  display: none;
   cursor: pointer;
 }
 
